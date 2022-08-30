@@ -1,4 +1,4 @@
-#from haystack.utils import launch_es
+from haystack.utils import launch_es
 import wget
 import gdown
 

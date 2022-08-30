@@ -31,7 +31,7 @@ document_store = ElasticsearchDocumentStore(
     username= "",
     password= "",
     index= doc_index,
-    similarity= "dot_product",
+    similarity= "cosine",
     embedding_dim= 512,
     embedding_field= "emb",
     excluded_meta_data=["emb"])
@@ -48,7 +48,7 @@ retriever = EmbeddingRetriever(
 
 document_store.update_embeddings(retriever)
 
-documents = retriever.run_query('que es el retiro parcial?')
+documents = retriever.run_query('cuando se realiza el retiro parcial?')
 
 print(documents[0]['documents'][0].content)
 

@@ -10,7 +10,7 @@ document_store = ElasticsearchDocumentStore(
     username= "",
     password= "",
     index= doc_index,
-    similarity= "dot_product",
+    similarity= "cosine",
     embedding_dim= 512,
     embedding_field= "emb",
     excluded_meta_data=["emb"])
@@ -26,9 +26,9 @@ reader = FARMReader(model_name_or_path="mrm8488/bert-base-spanish-wwm-cased-fine
 
 pipeline = ExtractiveQAPipeline(reader=reader, retriever=retriever)
 
-res = pipeline.run(
-    query = '¿Como realizar un retiro parcial de un curso?',
-    params = {'Retriever': {'top_k': 5}, 'Reader':{'top_k': 3}}
-)
+#res = pipeline.run(
+#    query = '¿Como realizar un retiro parcial de un curso?',
+#    params = {'Retriever': {'top_k': 5}, 'Reader':{'top_k': 3}}
+#)
 
-print(res)
+#print(res['answers'])
